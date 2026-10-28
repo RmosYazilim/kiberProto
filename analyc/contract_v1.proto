@@ -12,12 +12,19 @@ service ContractService {
   rpc StopExtractContract (StopExtractContractRequest) returns (StopExtractContractResponse);
 }
 
+// Acente. 0 = rehber yok (genel prompt). ANEX -> anex.md, PEGAS -> pegas.md.
+enum Agency {
+  AGENCY_UNSPECIFIED = 0;
+  ANEX = 1;
+  PEGAS = 2;
+}
+
 message ExtractContractRequest {
   int32 hotel_id = 1;   // HotelInfo.id (opsiyonel; 0 = bilinmiyor)
   string file_name = 2; // orijinal dosya adi (log / rapor icin)
   bytes pdf = 3;        // PDF icerigi
   int32 user_id = 4;    // staging id, zorunlu (0 → INVALID_ARGUMENT)
-  string agency = 5;    // acente adi (panel gonderir, orn. "ANEX"); rehber varsa prompt'a eklenir
+  Agency agency = 5;    // acente; eslesen md prompt'a eklenir
 }
 
 message ContractCheck {
