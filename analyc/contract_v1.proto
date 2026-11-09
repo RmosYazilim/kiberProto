@@ -12,11 +12,12 @@ service ContractService {
   rpc StopExtractContract (StopExtractContractRequest) returns (StopExtractContractResponse);
 }
 
-// Acente. 0 = rehber yok (genel prompt). ANEX -> anex.md, PEGAS -> pegas.md.
+// Acente. 0 = rehber yok (genel prompt). ANEX -> anex.md, PEGAS -> pegas.md, TUI -> tui.md.
 enum Agency {
   AGENCY_UNSPECIFIED = 0;
   ANEX = 1;
   PEGAS = 2;
+  TUI = 3;
 }
 
 message ExtractContractRequest {
